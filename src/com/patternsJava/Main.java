@@ -1,16 +1,17 @@
 package com.patternsJava;
 
-import com.patternsJava.Adapter.FilterCaramel;
-import com.patternsJava.Adapter.FilterVivid;
-import com.patternsJava.Adapter.Image;
-import com.patternsJava.Adapter.ImageView;
-import com.patternsJava.Adapter.avaFilters.Caramel;
+import com.patternsJava.Decorator.CloudStream;
+import com.patternsJava.Decorator.CompressedCloudStream;
+import com.patternsJava.Decorator.EncryptedCloudStream;
+import com.patternsJava.Decorator.Stream;
 
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-        var imageView = new ImageView(new Image());
-        imageView.apply(new FilterCaramel(new Caramel()));
+        storeCreditCard(new EncryptedCloudStream(new CompressedCloudStream(new CloudStream())));
+    }
+
+    public static void storeCreditCard(Stream stream) {
+        stream.write("1234-1234-1234-1234");
     }
 }
