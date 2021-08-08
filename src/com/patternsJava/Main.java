@@ -20,5 +20,6 @@ public class Main {
         group.add(group1);
         group.add(group2);
         group.render();
+        group.move();
     }
 }
