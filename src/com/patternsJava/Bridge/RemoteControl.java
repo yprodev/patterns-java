@@ -4,15 +4,18 @@ package com.patternsJava.Bridge;
 // Advanced Remote Control (setChannel)
 // Movie Remote Control (play, pause, rewind)
 
-// RemoteControl
-//   SonyRemoteControl
-//   SamsungRemoteControl
-//   AdvancedRemoteControl
-//     SonyAdvancedRemoteControl
-//     SamsungAdvancedRemoteControl
-// 2 types of remote controls -> 2 new classes
+public class RemoteControl {
+    protected Device device;
 
-public abstract class RemoteControl {
-    public abstract void turnOn();
-    public abstract void turnOff();
+    public RemoteControl(Device device) {
+        this.device = device;
+    }
+
+    public void turnOn() {
+        device.turnOn();
+    };
+
+    public void turnOff() {
+        device.turnOff();
+    };
 }
