@@ -1,17 +1,17 @@
 package com.patternsJava;
 
-import com.patternsJava.Decorator.CloudStream;
-import com.patternsJava.Decorator.CompressedCloudStream;
-import com.patternsJava.Decorator.EncryptedCloudStream;
-import com.patternsJava.Decorator.Stream;
+import com.patternsJava.Facade.Message;
+import com.patternsJava.Facade.NotificationServer;
 
 public class Main {
 
     public static void main(String[] args) {
-        storeCreditCard(new EncryptedCloudStream(new CompressedCloudStream(new CloudStream())));
-    }
+        var server = new NotificationServer();
+        var connection = server.connect("ip");
+        var authToken = server.authenticate("appID", "key");
+        var message = new Message("Hello World");
+        server.send(authToken, message, "target");
 
-    public static void storeCreditCard(Stream stream) {
-        stream.write("1234-1234-1234-1234");
+        connection.disconnect();
     }
 }
